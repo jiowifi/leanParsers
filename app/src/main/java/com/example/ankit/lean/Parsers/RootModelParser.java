@@ -38,7 +38,7 @@ class RootModelParser {
 
 					CreatorModel creator = creator_parser.parseCreatorModel(jsobj.getJSONObject("creator").toString());
 
-					local_model = new RootModel(jsobj.getString("code_of_conduct") , jsobj.getString("description") , version, jsobj.getString("start_time") , jsobj.getString("topic") , jsobj.getInt("id") , jsobj.getString("background_image") , jsobj.getString("email") , jsobj.getString("name") , call_for_papers, copyright, jsobj.getString("state") , jsobj.getString("timezone") , jsobj.getString("location_name") , jsobj.getString("type") , jsobj.getString("privacy") , jsobj.getString("logo") , jsobj.getString("schedule_published_on") , social_linkss, jsobj.getString("end_time") , creator, jsobj.getString("organizer_name") , jsobj.getString("organizer_description") , );
+					local_model = new RootModel(jsobj.getInt("id") , jsobj.getString("type") , version, jsobj.getString("organizer_description") , jsobj.getString("email") , jsobj.getString("name") , jsobj.getString("timezone") , jsobj.getString("schedule_published_on") , jsobj.getString("privacy") , jsobj.getString("state") , jsobj.getString("start_time") , call_for_papers, copyright, social_linkss, jsobj.getString("description") , jsobj.getString("end_time") , jsobj.getString("background_image") , jsobj.getString("logo") , jsobj.getString("code_of_conduct") , jsobj.getString("organizer_name") , creator, jsobj.getString("topic") , jsobj.getString("location_name") , );
  			} 
 			catch (JSONException e){
 
