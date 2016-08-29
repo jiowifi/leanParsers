@@ -1,19 +1,19 @@
 
 class CopyrightModel {
 
-	public String licence_url;
+	public int year;
 	public String holder;
 	public String logo;
-	public int year;
+	public String licence_url;
 	public String holder_url;
 	public String licence;
 
-	public CopyrightModel(String licence_url, String holder, String logo, int year, String holder_url, String licence) {
+	public CopyrightModel(int year, String holder, String logo, String licence_url, String holder_url, String licence) {
 
-		this.licence_url = licence_url;
+		this.year = year;
 		this.holder = holder;
 		this.logo = logo;
-		this.year = year;
+		this.licence_url = licence_url;
 		this.holder_url = holder_url;
 		this.licence = licence;
 
