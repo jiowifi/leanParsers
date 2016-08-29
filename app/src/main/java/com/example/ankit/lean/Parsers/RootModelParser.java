@@ -8,8 +8,8 @@ class RootModelParser {
 		Social_linksModelParser social_links_parser;
 		Call_for_papersModelParser call_for_papers_parser = new Call_for_papersModelParser();
 		CreatorModelParser creator_parser = new CreatorModelParser();
-		VersionModelParser version_parser = new VersionModelParser();
 		CopyrightModelParser copyright_parser = new CopyrightModelParser();
+		VersionModelParser version_parser = new VersionModelParser();
 
 		public RootModelParser() {
 			social_links_parser = new Social_linksModelParser();
@@ -34,11 +34,11 @@ class RootModelParser {
 
 					CreatorModel creator = creator_parser.parseCreatorModel(jsobj.getJSONObject("creator").toString());
 
-					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
-
 					CopyrightModel copyright = copyright_parser.parseCopyrightModel(jsobj.getJSONObject("copyright").toString());
 
-					local_model = new RootModel(jsobj.getString("schedule_published_on") , jsobj.getString("logo") , jsobj.getString("privacy") , social_linkss, jsobj.getString("description") , jsobj.getString("start_time") , jsobj.getString("background_image") , call_for_papers, jsobj.getString("state") , jsobj.getString("organizer_description") , jsobj.getString("type") , jsobj.getString("code_of_conduct") , jsobj.getInt("id") , creator, jsobj.getString("location_name") , jsobj.getString("end_time") , version, jsobj.getString("name") , jsobj.getString("email") , jsobj.getString("organizer_name") , copyright, jsobj.getString("timezone") , jsobj.getString("topic") , );
+					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
+
+					local_model = new RootModel(jsobj.getString("organizer_name") , jsobj.getString("type") , jsobj.getString("timezone") , jsobj.getString("organizer_description") , jsobj.getString("location_name") , jsobj.getString("state") , jsobj.getString("end_time") , jsobj.getString("privacy") , jsobj.getInt("id") , jsobj.getString("name") , social_linkss, call_for_papers, creator, jsobj.getString("background_image") , jsobj.getString("schedule_published_on") , jsobj.getString("email") , jsobj.getString("topic") , jsobj.getString("description") , jsobj.getString("code_of_conduct") , jsobj.getString("logo") , copyright, version, jsobj.getString("start_time") , );
  			} 
 			catch (JSONException e){
 
