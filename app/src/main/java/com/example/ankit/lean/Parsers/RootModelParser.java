@@ -5,11 +5,11 @@ import org.json.JSONArray;
 
 class RootModelParser {
 
+		VersionModelParser version_parser = new VersionModelParser();
+		Call_for_papersModelParser call_for_papers_parser = new Call_for_papersModelParser();
 		CreatorModelParser creator_parser = new CreatorModelParser();
 		Social_linksModelParser social_links_parser;
 		CopyrightModelParser copyright_parser = new CopyrightModelParser();
-		Call_for_papersModelParser call_for_papers_parser = new Call_for_papersModelParser();
-		VersionModelParser version_parser = new VersionModelParser();
 
 		public RootModelParser() {
 			social_links_parser = new Social_linksModelParser();
@@ -20,6 +20,10 @@ class RootModelParser {
 			RootModel local_model = null;
 			try {
 					JSONObject jsobj = new JSONObject(json_object);
+
+					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
+
+					Call_for_papersModel call_for_papers = call_for_papers_parser.parseCall_for_papersModel(jsobj.getJSONObject("call_for_papers").toString());
 
 					CreatorModel creator = creator_parser.parseCreatorModel(jsobj.getJSONObject("creator").toString());
 
@@ -34,11 +38,7 @@ class RootModelParser {
 
 					CopyrightModel copyright = copyright_parser.parseCopyrightModel(jsobj.getJSONObject("copyright").toString());
 
-					Call_for_papersModel call_for_papers = call_for_papers_parser.parseCall_for_papersModel(jsobj.getJSONObject("call_for_papers").toString());
-
-					VersionModel version = version_parser.parseVersionModel(jsobj.getJSONObject("version").toString());
-
-					local_model = new RootModel(jsobj.getString("schedule_published_on") , jsobj.getString("start_time") , jsobj.getString("state") , creator, jsobj.getString("email") , social_linkss, jsobj.getString("type") , copyright, jsobj.getString("organizer_name") , jsobj.getString("privacy") , jsobj.getString("code_of_conduct") , jsobj.getString("timezone") , jsobj.getString("background_image") , jsobj.getString("topic") , jsobj.getString("logo") , jsobj.getString("name") , jsobj.getInt("id") , jsobj.getString("end_time") , jsobj.getString("description") , jsobj.getString("location_name") , jsobj.getString("organizer_description") , call_for_papers, version, );
+					local_model = new RootModel(jsobj.getString("background_image") , jsobj.getString("organizer_description") , jsobj.getString("privacy") , jsobj.getString("organizer_name") , jsobj.getString("name") , jsobj.getString("start_time") , version, jsobj.getString("code_of_conduct") , jsobj.getInt("id") , jsobj.getString("location_name") , jsobj.getString("state") , jsobj.getString("timezone") , call_for_papers, jsobj.getString("type") , jsobj.getString("end_time") , jsobj.getString("schedule_published_on") , jsobj.getString("email") , jsobj.getString("logo") , jsobj.getString("description") , creator, jsobj.getString("topic") , social_linkss, copyright, );
  			} 
 			catch (JSONException e){
 
