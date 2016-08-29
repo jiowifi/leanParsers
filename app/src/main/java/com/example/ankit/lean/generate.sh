@@ -3,7 +3,7 @@ msg_file='msg.txt'
 files=`ls $folder_name`
 messages=`cat $msg_file`
 
-for i in `seq 1 10`
+for i in `seq 1 100`
 do
 file_=${files[$RANDOM % ${#files[@]} ]}
 location=$folder_name'/'$file_
